@@ -1,12 +1,13 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, validator
 
 class Tarefa(BaseModel):
     id: str | None
     descricao: str
     responsavel: str| None
     nivel: int
-    situacao: str| None
+    situacao: str | None
     prioridade: int
+    usuario_id: str | int | None
 
     class Config:
         orm_mode = True
@@ -15,7 +16,8 @@ class Tarefa(BaseModel):
     def fromDict(cls, tarefa):
         usuario_ = Tarefa(id=str(tarefa['_id']), descricao=tarefa['descricao'], 
                           responsavel=tarefa['responsavel'], nivel=tarefa['nivel'],
-                           situacao=tarefa['situacao'], prioridade=tarefa['prioridade'])
+                           situacao=tarefa['situacao'], prioridade=tarefa['prioridade'],
+                           usuario_id=str(tarefa['usuario_id']))
         
         return usuario_
     
@@ -26,6 +28,7 @@ class Tarefa(BaseModel):
             "nivel": self.nivel,
             "situacao": self.situacao,
             "prioridade": self.prioridade,
+            "usuario_id": self.usuario_id,
         }
 
 class UsuarioSimples(BaseModel):

@@ -10,8 +10,8 @@ class MongoDbRepository:
         self.nivel = [1,3,5,8]
         self.prioridade = [1,2,3]
         self.situacao = ['nova','em andamento','resolvida']
-        #uri = 'mongodb://localhost:27017'
-        uri = config('MONGO_URL')
+        uri = 'mongodb://localhost:27017'
+        #uri = config('MONGO_URL')
         client = MongoClient(uri)
         db = client['tarefasWeb']
         self.tarefas = db['tarefas']
@@ -30,7 +30,7 @@ class MongoDbRepository:
         tarefa.id = str(_id)
         return {'mensagem': 'Tarefa criada'}
     
-    def mostrarTarefas(self) -> List:
+    def mostrarTarefas(self):
         tarefas = self.tarefas.find()
         return list(map(Tarefa.fromDict, tarefas))
     
@@ -54,6 +54,8 @@ class MongoDbRepository:
         return {'mensagem': 'tarefa nao encontrada'}
     
     def atualizarTarefa(self, id, tarefa) -> Optional[Tarefa]:
+        if len(id) != 24:
+            return {'mensagem': 'erro na quantidade de caracteres'}
         filtro = {"_id": ObjectId(id)}
         self.tarefas.update_one(filtro, {'$set': tarefa.toDict()})
         tarefa.id = id

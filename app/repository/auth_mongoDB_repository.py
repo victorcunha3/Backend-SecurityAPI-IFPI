@@ -7,8 +7,8 @@ from ..models.viewmodels import Usuario
 class AuthMongoDBRepository():
 
     def __init__(self):
-        #uri = 'mongodb://localhost:27017'
-        uri = config('MONGO_URL')
+        uri = 'mongodb://localhost:27017'
+        #uri = config('MONGO_URL')
         client = MongoClient(uri)
         db = client['tarefasUsuarios']
         self.usuarios = db['usuarios']
