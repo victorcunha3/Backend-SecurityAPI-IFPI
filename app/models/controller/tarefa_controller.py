@@ -25,7 +25,7 @@ async def mostrar_tarefas(usuario: UsuarioSimples = Depends(obter_usuario_logado
 @routes.get('/{id}', status_code=status.HTTP_200_OK)
 async def mostrar_by_id(id: str, usuario: UsuarioSimples = Depends(obter_usuario_logado)):
     if len(id) != 24:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail=f'ID(24)')
     tarefas = MongoDbRepository().mostrarById(id)
     if not tarefas:
@@ -40,14 +40,14 @@ async def mostrar_by_id(id: str, usuario: UsuarioSimples = Depends(obter_usuario
 @routes.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
 async def deletar_tarefa(id: str | int, usuario: UsuarioSimples = Depends(obter_usuario_logado)):
     if len(id) != 24:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail=f'ID(24)')
     tarefas = MongoDbRepository().deletarTarefa(id)
 
 @routes.put('/{id}')
 async def atualizar_tarefa(id: str, tarefa: Tarefa, usuario: UsuarioSimples = Depends(obter_usuario_logado)):
     if len(id) != 24:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail=f'ID(24)')
     tarefas = MongoDbRepository().atualizarTarefa(id, tarefa)
     if tarefas.usuario_id != usuario.id:

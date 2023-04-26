@@ -6,7 +6,6 @@ from ...infra.cryptograph.token_provider import JWTTokenProvider
 from ...repository.auth_mongoDB_repository import AuthMongoDBRepository
 from ..auth_utils import obter_usuario_logado
 from ..viewmodels import CriarUsuario, LoginData, UsuarioSimples, Tarefa
-import datetime
 routes = APIRouter()
 prefix = '/auth'
 
@@ -20,7 +19,7 @@ jwt_provider = JWTTokenProvider()
 def auth_signup2(usuario: CriarUsuario, usuario_service: UsuarioService = Depends(UsuarioService)):
     return usuario_service.criar_usuario(usuario)
 
-@routes.post('/signin')
+@routes.post('/signin', status_code=status.HTTP_200_OK)
 def auth_signin(login_data: LoginData):
     usuario = auth_repository.obter_usuario_por_usuario(login_data.usuario)
 

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr, validator
+from pydantic import BaseModel, Field, EmailStr
 
 class Tarefa(BaseModel):
     id: str | None
@@ -14,12 +14,19 @@ class Tarefa(BaseModel):
 
     @classmethod
     def fromDict(cls, tarefa):
-        usuario_ = Tarefa(id=str(tarefa['_id']), descricao=tarefa['descricao'], 
-                          responsavel=tarefa['responsavel'], nivel=tarefa['nivel'],
-                           situacao=tarefa['situacao'], prioridade=tarefa['prioridade'],
-                           usuario_id=str(tarefa['usuario_id']))
-        
-        return usuario_
+        usuario_id = tarefa.get('usuario_id')
+        if usuario_id is not None:
+            usuario_id = str(usuario_id)
+        return Tarefa(
+            id=str(tarefa['_id']),
+            descricao=tarefa['descricao'],
+            responsavel=tarefa.get('responsavel'),
+            nivel=tarefa['nivel'],
+            situacao=tarefa.get('situacao'),
+            prioridade=tarefa['prioridade'],
+            usuario_id=usuario_id
+        )
+
     
     def toDict(self):
         return {
