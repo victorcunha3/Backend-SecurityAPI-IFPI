@@ -1,0 +1,156 @@
+/* Estilo para o BODY */
+body{
+    font-family:monospace;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Estilo para o HEADER */
+header {
+    background-color: #2A6190;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/*removendo as margens padrão*/
+h1 {
+    margin: 0;
+}
+  
+/* Estilo para o CONTAINER */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+/* Estilo para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+/* Estilo para os inputs */
+input[type="text"],
+select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: monospace;
+}
+  
+/* Estilo para os botões */
+button[type="button"] {
+    padding: 10px 20px;
+    background-color:#2A6190;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: monospace;
+}
+
+/*Transição*/
+button[type="button"]:hover {
+    background-color: #4091B2;
+}
+  
+/* Estilo para a tabela */
+table {
+    border-collapse:collapse;
+    margin-top: 20px;
+  }
+  
+table td, table th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+
+}
+  
+table th {
+    background-color: #2A6190;
+    color: #fff;
+}
+  
+select{
+    font-family: monospace;
+}
+
+.table-container{
+    overflow-x: auto;
+}
+
+/* Estilizando o botao Excluir do Js*/
+.botao-js{
+    border-radius: 4px;
+    font-family: monospace;
+    background-color:#2A6190;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+    padding: 4px;
+}
+
+/*Transição*/
+.botao-js:hover{
+    background-color: #4091B2;
+}
+
+/* CSS Responsivo para Dispositivos Móveis */
+@media screen and (max-width: 850px) {
+    .container {
+      max-width: 90%;
+      padding: 10px;
+    }
+}
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: monospace;
+}
+
+.form__label {
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.form__input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: monospace;
+}
+
+.form__submit {
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: #0080ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+.form__submit:hover {
+    background-color: #0066cc;
+}
+
+
+
