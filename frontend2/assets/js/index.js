@@ -1,7 +1,13 @@
 const API_URL = 'http://127.0.0.1:8000/tarefas'
+const token = `Bearer ${localStorage.getItem("access_token")}`
+
 
 async function obterTarefas() {
-  const response = await fetch(API_URL);
+  const response = await fetch(API_URL, {
+    headers: {
+      Authorization: token
+    }
+  });
   const data = await response.json();
   return data;
 }
@@ -24,7 +30,9 @@ async function criarTarefa() {
   const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: token
+
       },
       body: JSON.stringify(novaTarefa)
   });
@@ -92,6 +100,7 @@ async function apagarTarefa(id) {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",
+            Authorization: token
         },
     });
     if (response.status === 204){
@@ -161,6 +170,7 @@ async function atualizarTarefa(id, tarefa) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: token
     },
     body: JSON.stringify(tarefa),
   });
