@@ -31,7 +31,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type='email'] {
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(26, 182, 104, 0.3);
@@ -62,4 +63,10 @@ textarea:focus,
 button:focus,
 select:focus {
   outline: none;
+}
+
+a{
+  text-decoration: none;
+  font-family: monospace;
+  color: #3680c5;
 }

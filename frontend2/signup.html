@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+    <script defer src="./assets/js/signup.js"></script>
+    <title>Sc2</title>
+</head>
+<body>
+    <div class="login-wrapper">
+        <h1>TAREFAS</h1>
+        <form>
+            <label for="name">nome</label>
+            <input type="text" autocomplete="off" id="name" name="name" required>
+            <label for="username">Usuário</label>
+            <input type="text" autocomplete="off" id="username" name="username">
+            <label for="email">Email</label>
+            <input type="email" autocomplete="off" id="email" name="email">
+            <label for="password">Senha</label>
+            <input type="password" autocomplete="off" id="password" name="password">
+            <label for="password-confirm">Confirme a senha</label>
+            <input type="password" autocomplete="off" id="password-confirm" name="password-confirm">
+            <button type="submit" onclick="signIn()">Criar</button>
+        </form>
+        <a href="login.html"><p>Já possui uma conta? clique aqui para entrar</p></a>  
+      </div>
+</body>
+</html>
