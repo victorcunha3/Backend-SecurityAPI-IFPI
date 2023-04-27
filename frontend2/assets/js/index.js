@@ -96,20 +96,46 @@ async function mostrarTarefas() {
   }
 }
 async function apagarTarefa(id) {
-    const response = await fetch(`${API_URL}/${id} `,{
-        method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: token
-        },
+  const confirmacao = await Swal.fire({
+    icon: 'warning',
+    title: 'Tem certeza que deseja apagar a tarefa?',
+    showCancelButton: true,
+    confirmButtonText: 'Sim',
+    cancelButtonText: 'Não',
+  });
+  
+  if (confirmacao.isConfirmed) {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
     });
-    if (response.status === 204){
-        console.log("Tarefa apagada com sucesso")
-    }else{
-        console.log("Erro ao apagar")
+
+    if (response.status === 204) {
+      console.log("Tarefa apagada com sucesso");
+      await Swal.fire({
+        icon: 'success',
+        title: 'Tarefa apagada com sucesso',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    } else {
+      console.log("Erro ao apagar tarefa");
+      await Swal.fire({
+        icon: 'error',
+        title: 'Erro ao apagar tarefa',
+        text: 'Não foi possível apagar a tarefa.',
+        confirmButtonText: 'OK'
+      });
     }
+
     mostrarTarefas();
+  }
 }
+
+
 
 async function atualizarTarefas(id) {
   const tarefa = await obterTarefa(id);
