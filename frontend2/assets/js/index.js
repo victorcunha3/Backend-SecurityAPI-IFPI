@@ -96,7 +96,7 @@ async function mostrarTarefas() {
   }
 }
 async function apagarTarefa(id) {
-    const response = await fetch(`${API_URL}${id} `,{
+    const response = await fetch(`${API_URL}/${id} `,{
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json",
