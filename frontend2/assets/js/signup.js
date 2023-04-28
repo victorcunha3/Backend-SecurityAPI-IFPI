@@ -18,7 +18,7 @@ function signUp(event) {
         return;
     }
 
-    const API_URL = 'http://127.0.0.1:8000/auth/signup';
+    const API_URL = 'http://127.0.0.1:8000/auth/signup2';
     const user = {
         nome: nameInput.value,
         usuario: usernameInput.value,
