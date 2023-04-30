@@ -186,7 +186,11 @@ async function atualizarTarefas(id) {
 }
 
 async function obterTarefa(id) {
-  const response = await fetch(`${API_URL}${id}`);
+  const response = await fetch(`${API_URL}${id}`,{
+    headers:{
+      Authorization: token
+    }
+  });
   const data = await response.json();
   return data;
 }

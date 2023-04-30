@@ -1,156 +1,85 @@
-/* Estilo para o BODY */
-body{
-    font-family:monospace;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-/* Estilo para o HEADER */
-header {
-    background-color: #2A6190;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-/*removendo as margens padrão*/
-h1 {
-    margin: 0;
-}
-  
-/* Estilo para o CONTAINER */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-  
-/* Estilo para o formulário */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-  
-/* Estilo para os inputs */
-input[type="text"],
-select {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    font-family: monospace;
-}
-  
-/* Estilo para os botões */
-button[type="button"] {
-    padding: 10px 20px;
-    background-color:#2A6190;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-family: monospace;
-}
-
-/*Transição*/
-button[type="button"]:hover {
-    background-color: #4091B2;
-}
-  
-/* Estilo para a tabela */
-table {
-    border-collapse:collapse;
-    margin-top: 20px;
+/* Estilos para o corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
   }
   
-table td, table th {
+/* Estilos para o cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Estilos para o formulário */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #555;
+}
+
+/* Estilos para a tabela */
+#tabela-tarefas {
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#tabela-tarefas th,
+#tabela-tarefas td {
     padding: 10px;
     border: 1px solid #ccc;
-    text-align: center;
-
-}
-  
-table th {
-    background-color: #2A6190;
-    color: #fff;
-}
-  
-select{
-    font-family: monospace;
 }
 
-.table-container{
-    overflow-x: auto;
-}
-
-/* Estilizando o botao Excluir do Js*/
-.botao-js{
-    border-radius: 4px;
-    font-family: monospace;
-    background-color:#2A6190;
-    color: #fff;
-    border: none;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.4s ease;
-    padding: 4px;
-}
-
-/*Transição*/
-.botao-js:hover{
-    background-color: #4091B2;
-}
-
-/* CSS Responsivo para Dispositivos Móveis */
-@media screen and (max-width: 850px) {
-    .container {
-      max-width: 90%;
-      padding: 10px;
-    }
-}
-
-
-
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    font-family: monospace;
-}
-
-.form__label {
+#tabela-tarefas th {
+    background-color: #f2f2f2;
     font-weight: bold;
-    font-family: monospace;
 }
 
-.form__input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: monospace;
+#tabela-tarefas tr:hover {
+    background-color: #f2f2f2;
 }
-
-.form__submit {
-    margin-top: 16px;
-    padding: 8px 16px;
-    background-color: #0080ff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    font-family: monospace;
-}
-
-.form__submit:hover {
-    background-color: #0066cc;
-}
-
-
-
