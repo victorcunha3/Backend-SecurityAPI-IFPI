@@ -15,26 +15,13 @@ auth_repository = AuthMongoDBRepository()
 hash_provider = HashProvider()
 jwt_provider = JWTTokenProvider()
 
-@routes.post('/signup2', status_code=status.HTTP_201_CREATED, response_model=UsuarioSimples)
-def auth_signup2(usuario: CriarUsuario, usuario_service: UsuarioService = Depends(UsuarioService)):
+@routes.post('/signup', status_code=status.HTTP_201_CREATED, response_model=UsuarioSimples)
+def auth_signup(usuario: CriarUsuario, usuario_service: UsuarioService = Depends(UsuarioService)):
     return usuario_service.criar_usuario(usuario)
 
 @routes.post('/signin', status_code=status.HTTP_200_OK)
-def auth_signin(login_data: LoginData):
-    usuario = auth_repository.obter_usuario_por_usuario(login_data.usuario)
-
-    if not usuario:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail='Usuário e/ou senha incorreto(s)!')
-
-    if hash_provider.verificar_senha(login_data.senha, usuario.senha):
-        token = jwt_provider.sign({'usuario_id': usuario.id})
-        return {'access_token': token}
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail='Usuário e/ou senha incorreto(s)!')
+def auth_signin(login_data: LoginData, usuario_service: UsuarioService = Depends(UsuarioService)):
+    return usuario_service.logar_usuario(login_data)
 
 
 @routes.get('/me', response_model=UsuarioSimples)

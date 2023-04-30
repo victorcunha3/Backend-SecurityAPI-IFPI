@@ -54,4 +54,7 @@ async def atualizar_tarefa(id: str, tarefa: Tarefa, usuario: UsuarioSimples = De
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail="Tarefa não encontrada!")
     
+    
+    
+    
     return tarefas
